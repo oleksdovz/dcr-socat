@@ -1,7 +1,7 @@
 FROM alpine:latest
 LABEL maintainer="Oleks Dovzh oleksdovz@gmail.com"
 
-RUN apk upgrade --no-cache -a --prune
+RUN apk update --no-cache && apk upgrade --no-cache -a --prune
 RUN apk add --no-cache socat
 
 ENV SOURCE_PORT=4533
