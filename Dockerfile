@@ -9,4 +9,4 @@ ENV DEST_PORT=4533
 ENV DEST_IP=192.168.0.11
 
 
-CMD sh -cx "socat tcp-listen:${SOURCE_PORT},fork,reuseaddr tcp-connect:${DEST_IP}:${DEST_PORT}"
+CMD sh -cx "while true; do socat tcp-listen:${SOURCE_PORT},fork,reuseaddr  tcp-connect:${DEST_IP}:${DEST_PORT},connect-timeout=30,forever,intervall=10 ; done"
