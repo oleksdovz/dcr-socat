@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rds-proxy
+  labels:
+    app: rds-proxy
+spec:
+  selector:
+    matchLabels:
+      app: rds-proxy
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: rds-proxy
+    spec:
+      containers:
+        - name: rds-proxy
+          image: odovzh/socat:0.0.7
+          env:
+            - name: SOURCE_PORT
+              value: "5432"
+            - name: DEST_PORT
+              value: "5432"
+            - name: DEST_IP
+              value: "dev-db-rds.amazonaws.com"
+          resources:
+            requests:
+              cpu: 20m
+              memory: 100Mi
+            limits:
+              cpu: 20m
+              memory: 100Mi
+          livenessProbe:
+            tcpSocket:
+              port: rds-proxy
+            failureThreshold: 3
+            periodSeconds: 10
+            initialDelaySeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: rds-proxy
+            failureThreshold: 3
+            periodSeconds: 10
+            initialDelaySeconds: 5        
+          startupProbe:
+            tcpSocket:
+              port: rds-proxy
+            failureThreshold: 30
+            periodSeconds: 10
+            initialDelaySeconds: 5              
+          ports:
+            - containerPort: 5432
+              name: rds-proxy
+      restartPolicy: Always
