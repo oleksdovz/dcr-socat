@@ -26,6 +26,7 @@ The following environment variables can be set to customize the behavior of the 
    ```bash
    docker build -t socat-proxy .
    ```
+   test
 
 ### 2. **Run the Container**
     You can start the container by using docker run and setting the necessary environment variables. 
