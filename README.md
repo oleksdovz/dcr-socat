@@ -23,13 +23,12 @@ The following environment variables can be set to customize the behavior of the 
 ### 1. Build the Docker Image:
    If you haven't already built the image, you can do so with the following command:
 
-   <!-- ```bash -->
+   ```bash
    docker build -t socat-proxy .
-   <!-- ``` -->
+   ```
 
 ### 2. Run the Container:
-    You can start the container by using docker run and setting the necessary environment variables. 
-    This example demonstrates setting up a proxy that listens on `SOURCE_PORT` and forwards to `DEST_IP:DEST_PORT`.
+You can start the container by using docker run and setting the necessary environment variables.  This example demonstrates setting up a proxy that listens on `SOURCE_PORT` and forwards to `DEST_IP:DEST_PORT`.
 
     docker run -e SOURCE_PORT=8080 -e DEST_PORT=9090 -e DEST_IP=192.168.0.20 socat-proxy
     
