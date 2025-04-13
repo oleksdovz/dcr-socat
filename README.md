@@ -26,15 +26,14 @@ The following environment variables can be set to customize the behavior of the 
    ```bash
    docker build -t socat-proxy .
    ```
-   test
 
 ### 2. **Run the Container**
     You can start the container by using docker run and setting the necessary environment variables. 
     This example demonstrates setting up a proxy that listens on `SOURCE_PORT` and forwards to `DEST_IP:DEST_PORT`.
 
-    ```bash
+    
     docker run -e SOURCE_PORT=8080 -e DEST_PORT=9090 -e DEST_IP=192.168.0.20 socat-proxy
-    ```
+    
 
 ### 3. **MySQL Use Case Example**
     To connect to a MySQL server on a remote machine from your local machine, you can forward a local port (3306) to the remote MySQL port (3306) using socat.
