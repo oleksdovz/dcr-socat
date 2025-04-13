@@ -23,9 +23,9 @@ The following environment variables can be set to customize the behavior of the 
 ### 1. Build the Docker Image:
    If you haven't already built the image, you can do so with the following command:
 
-   ```bash
+   <!-- ```bash -->
    docker build -t socat-proxy .
-   ```
+   <!-- ``` -->
 
 ### 2. Run the Container:
     You can start the container by using docker run and setting the necessary environment variables. 
